@@ -66,7 +66,7 @@ const projectsData = [
     technologies: ["React", "Styled-Comp.", "Framer Motion"], 
    images: [portfolioImg1, portfolioImg2, portfolioImg4],
     githubLink: "#", 
-    liveLink: "#" 
+    liveLink: "https://portfolio-indol-two-hwyb41xc7q.vercel.app/" 
   },
   { 
     title: "CV BUILDER", 
