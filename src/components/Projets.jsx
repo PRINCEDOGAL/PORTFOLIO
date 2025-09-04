@@ -20,7 +20,9 @@ import univDigitalImg1 from '../assets/projects/univDigital/UNIV.jpeg';
 import univDigitalImg2 from '../assets/projects/univDigital/DIG.PNG';
 
 // Projet 2: EXOTIP-TRIP
-import exotripImg1 from '../assets/projects/exotrip/DIG.PNG';
+import exotripImg1 from '../assets/projects/exotrip/1.PNG';
+import exotripImg2 from '../assets/projects/exotrip/10.PNG';
+
 
 // Projet 3: Mon Portfolio
 import portfolioImg1 from '../assets/projects/portfolio/cvv.PNG';
@@ -51,12 +53,12 @@ const projectsData = [
     liveLink: "https://univers-digital-56vd.vercel.app/" 
   },
   { 
-    title: "EXOTIP-TRIP", 
-    description: "Site de la junior entreprise du développement informatique.", 
-    technologies: ["Symfony", "PHP", "Twig"], 
-    images: [exotripImg1], 
+    title: "Galio-Student", 
+    description: "Site d'inscription aux concours a Iuc .", 
+    technologies: ["React js", "node js", "MongoDB"], 
+    images: [exotripImg1, exotripImg2], 
     githubLink: "#", 
-    liveLink: "#" 
+    liveLink: "https://students.myiuc.com/" 
   },
   { 
     title: "Mon site personnel", 

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 // Imports de Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,57 +10,72 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-//Imports des images (avec html et css en commentaire)
-import htmlIcon from '../assets/skills/icone-html.png';
-import cssIcon from '../assets/skills/icone-css.svg';
-import jsIcon from '../assets/skills/js.png';
-import nodeIcon from '../assets/skills/nod.png';
-import phpIcon from '../assets/skills/php.png';
-import bootstrapIcon from '../assets/skills/bootstrap.png';
-import angularIcon from '../assets/skills/angu.png';
-import reactIcon from '../assets/skills/react.png';
-import cIcon from '../assets/skills/c.png';
-import cplusIcon from '../assets/skills/cplus.png';
-import javaIcon from '../assets/skills/java.png';
-import pythonIcon from '../assets/skills/python.png';
-import gitIcon from '../assets/skills/git.png';
-import githubIcon from '../assets/skills/github.png';
-import mysqlIcon from '../assets/skills/mysql.png';
-import scrumIcon from '../assets/skills/scrum.jpg';
-import zohoIcon from '../assets/skills/zoho.png';
-import jiraIcon from '../assets/skills/JiraSoftware.png';
-import trelloIcon from '../assets/skills/Trello.png';
+// Imports des icônes depuis la bibliothèque
+import { 
+  FaHtml5, FaCss3Alt, FaJsSquare, FaNodeJs, FaPhp, FaBootstrap, FaAngular, FaReact, 
+  FaJava, FaPython, FaGitAlt, FaGithub, FaJira, FaTrello, FaTasks 
+} from 'react-icons/fa';
+import { SiC, SiCplusplus, SiMysql, SiZoho } from 'react-icons/si';
 
-// Données des compétences (avec HTML5 et CSS3 en commentaire)
+// Données des compétences (avec des composants icônes)
 const skillsData = [
     { 
       category: "Web", 
       skills: [ 
-         { name: "HTML5", icon: htmlIcon },
-         { name: "CSS3", icon: cssIcon },
-       { name: "JavaScript", icon: jsIcon }, 
-        { name: "Node.js", icon: nodeIcon }, 
-        { name: "PHP", icon: phpIcon }, 
-        { name: "Bootstrap", icon: bootstrapIcon }, 
-        { name: "Angular", icon: angularIcon }, 
-        { name: "React", icon: reactIcon } 
+        { name: "HTML5", IconComponent: FaHtml5, color: "#E34F26" },
+        { name: "CSS3", IconComponent: FaCss3Alt, color: "#1572B6" },
+        { name: "JavaScript", IconComponent: FaJsSquare, color: "#F7DF1E" }, 
+        { name: "Node.js", IconComponent: FaNodeJs, color: "#339933" }, 
+        { name: "PHP", IconComponent: FaPhp, color: "#777BB4" }, 
+        { name: "Bootstrap", IconComponent: FaBootstrap, color: "#7952B3" }, 
+        { name: "Angular", IconComponent: FaAngular, color: "#DD0031" }, 
+        { name: "React", IconComponent: FaReact, color: "#61DAFB" } 
       ] 
     },
-    { category: "Software", skills: [ { name: "C", icon: cIcon }, { name: "C++", icon: cplusIcon }, { name: "Java", icon: javaIcon }, { name: "Python", icon: pythonIcon } ] },
-    { category: "Serveurs & Outils", skills: [ { name: "Git", icon: gitIcon }, { name: "GitHub", icon: githubIcon }, { name: "MySQL", icon: mysqlIcon } ] },
-    { category: "Scrum & Agile", skills: [ { name: "Scrum", icon: scrumIcon }, { name: "Zoho", icon: zohoIcon } ] },
-    { category: "Travail en Équipe", skills: [ { name: "Jira Software", icon: jiraIcon }, { name: "Trello", icon: trelloIcon } ] }
+    { 
+      category: "Software", 
+      skills: [ 
+        { name: "C", IconComponent: SiC, color: "#A8B9CC" }, 
+        { name: "C++", IconComponent: SiCplusplus, color: "#00599C" }, 
+        { name: "Java", IconComponent: FaJava, color: "#f89820" }, 
+        { name: "Python", IconComponent: FaPython, color: "#3776AB" } 
+      ] 
+    },
+    { 
+      category: "Serveurs & Outils", 
+      skills: [ 
+        { name: "Git", IconComponent: FaGitAlt, color: "#F05032" }, 
+        { name: "GitHub", IconComponent: FaGithub, color: "#181717" }, // Sera stylé différemment
+        { name: "MySQL", IconComponent: SiMysql, color: "#4479A1" } 
+      ] 
+    },
+    { 
+      category: "Scrum & Agile", 
+      skills: [ 
+        { name: "Scrum", IconComponent: FaTasks, color: "#0091D5" }, 
+        { name: "Zoho", IconComponent: SiZoho, color: "#E42526" } 
+      ] 
+    },
+    { 
+      category: "Travail en Équipe", 
+      skills: [ 
+        { name: "Jira", IconComponent: FaJira, color: "#0052CC" }, 
+        { name: "Trello", IconComponent: FaTrello, color: "#0079BF" } 
+      ] 
+    }
 ];
 
-// Styles
+// =================================================================================
+// == STYLES ==
+// =================================================================================
 const SkillsSection = styled.section`
   padding: 100px 0;
    background-color: #1a1a1a;
   .swiper-pagination-bullet { background-color: #f0f0f0; width: 10px; height: 10px; }
-  .swiper-pagination-bullet-active { background-color: #61dafb; }
+  .swiper-pagination-bullet-active { background-color: #00bfff; } // Assorti au bleu
 `;
 
-const SkillSlide = styled.div`
+const SkillSlide = styled(motion.div)`
   background: radial-gradient(circle, #1a2a45, #0d1b2a);
   border-radius: 15px;
   padding: 2.5rem 2rem;
@@ -70,6 +86,7 @@ const SkillSlide = styled.div`
   border: 2px solid #00bfff;
   box-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 25px #00f6ff, 0 0 40px #00f6ff;
@@ -90,19 +107,32 @@ const IconsGrid = styled.div`
   width: 100%;
 `;
 
-const SkillItem = styled.div`
+const SkillItem = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  transition: transform 0.3s ease;
-  &:hover { transform: scale(1.1); }
+  // La couleur est maintenant passée en prop, avec une couleur par défaut
+  color: ${props => props.color || '#f0f0f0'};
+  
+  // L'icône change de couleur au survol de l'item
+  &:hover {
+    color: #fff;
+  }
 `;
 
-const SkillIcon = styled.img`
-  width: 50px;
+const SkillIcon = styled.div`
+  font-size: 50px;
   height: 50px;
-  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  
+  // L'icône grandit au survol de l'item
+  ${SkillItem}:hover & {
+    transform: scale(1.2);
+  }
 `;
 
 const SkillName = styled.p`
@@ -110,8 +140,9 @@ const SkillName = styled.p`
   color: #f0f0f0;
   text-align: center;
 `;
-
-// Composant
+// =================================================================================
+// == COMPOSANT REACT ==
+// =================================================================================
 const Skills = () => {
   return (
     <SkillsSection id="competences">
@@ -123,28 +154,31 @@ const Skills = () => {
         centeredSlides={true}
         slidesPerView={'auto'}
         loop={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
+        autoplay={{ delay: 3500, disableOnInteraction: false }}
+        coverflowEffect={{ rotate: 50, stretch: 0, depth: 100, modifier: 1, slideShadows: true }}
         pagination={{ clickable: true }}
         style={{ padding: '2rem 0' }}
       >
-        {skillsData.map((categoryData) => (
+        {skillsData.map((categoryData, index) => (
           <SwiperSlide key={categoryData.category} style={{ width: '450px' }}>
-            <SkillSlide>
+            <SkillSlide
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
               <CategoryTitle>{categoryData.category}</CategoryTitle>
               <IconsGrid>
-                {categoryData.skills.map((skill) => (
-                  <SkillItem key={skill.name}>
-                    <SkillIcon src={skill.icon} alt={`${skill.name} logo`} />
+                {categoryData.skills.map((skill, skillIndex) => (
+                  <SkillItem 
+                    key={skill.name}
+                    color={skill.color} // Passe la couleur officielle à l'icône
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 + skillIndex * 0.1 }}
+                  >
+                    <SkillIcon>
+                      <skill.IconComponent />
+                    </SkillIcon>
                     <SkillName>{skill.name}</SkillName>
                   </SkillItem>
                 ))}

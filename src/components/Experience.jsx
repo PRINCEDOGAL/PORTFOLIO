@@ -13,7 +13,7 @@ const experiencesData = [
     id: 1,
     number: "01",
     role: "Développeur Full Stack",
-    company: "Tech Solutions Inc.",
+    company: "SOFWIFY.",
     location: "douala, cameroun",
     period: "2024 - ",
     technologies: ["React", "Node.js",  "MongoDB","Git" ,"HTML","CSS","php-mysql"],
