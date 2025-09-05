@@ -4,7 +4,7 @@ import styled, { keyframes, css } from 'styled-components'; // Importez 'css'
 import { motion } from 'framer-motion';
 
 import bgVideo from '../assets/code2.mp4';
-import cvFile from '../assets/CV3.pdf';
+import cvFile from '../assets/CV4.pdf';
 
 // === ANIMATIONS KEYFRAMES (inchangées) ===
 const textRevealBox = keyframes` /* ... */ 50% { width: 100%; left: 0; } 100% { width: 0; left: 100%; }`;
